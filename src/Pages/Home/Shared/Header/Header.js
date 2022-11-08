@@ -7,12 +7,14 @@ const Header = () => {
   const menuItem = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <Link className="font-semibold" to="/">
+          Home
+        </Link>
       </li>
     </>
   );
   return (
-    <div data-theme="acid" className="navbar h-20 mb-12 bg-base-100">
+    <div data-theme="acid" className="navbar h-20 mb-8 bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -46,7 +48,7 @@ const Header = () => {
           <img src={logo3} alt="" />
         </Link>
         <h2 className="text-3xl font-semibold">
-          <i>Khan Rent a car</i>
+          <i>Khan's Car Rental</i>
         </h2>
       </div>
       <div className="navbar-center hidden lg:flex">

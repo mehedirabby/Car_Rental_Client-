@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer
       data-theme="luxury"
-      className="footer footer-center p-12 bg-base-200 text-base-content rounded"
+      className="footer footer-center mt-8 p-12 bg-base-200 text-base-content rounded"
     >
       <div className="grid grid-flow-col gap-4">
         <a href="/" className="link link-hover">
