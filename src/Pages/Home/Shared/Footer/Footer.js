@@ -2,7 +2,10 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
+    <footer
+      data-theme="luxury"
+      className="footer footer-center p-12 bg-base-200 text-base-content rounded"
+    >
       <div className="grid grid-flow-col gap-4">
         <a href="/" className="link link-hover">
           About us

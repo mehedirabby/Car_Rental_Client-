@@ -1,8 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import logo3 from "../../../../assets/logo3.png";
+import "./Header.css";
 
 const Header = () => {
+  const menuItem = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+    </>
+  );
   return (
-    <div className="navbar bg-base-100">
+    <div data-theme="acid" className="navbar h-20 mb-12 bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -25,76 +35,25 @@ const Header = () => {
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <a href="/">Item 1</a>
-            </li>
-            <li tabIndex={0}>
-              <a href="/" className="justify-between">
-                Parent
-                <svg
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                </svg>
-              </a>
-              <ul className="p-2">
-                <li>
-                  <a href="/">Submenu 1</a>
-                </li>
-                <li>
-                  <a href="/">Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="/">Item 3</a>
-            </li>
+            {menuItem}
           </ul>
         </div>
-        <a href="/" className="btn btn-ghost normal-case text-xl">
-          daisyUI
-        </a>
+        <Link
+          to="/"
+          href="/"
+          className="logo3 btn btn-ghost normal-case text-xl"
+        >
+          <img src={logo3} alt="" />
+        </Link>
+        <h2 className="text-3xl font-semibold">
+          <i>Khan Rent a car</i>
+        </h2>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0">
-          <li>
-            <a href="/">Item 1</a>
-          </li>
-          <li tabIndex={0}>
-            <a href="/">
-              Parent
-              <svg
-                className="fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-              >
-                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-              </svg>
-            </a>
-            <ul className="p-2">
-              <li>
-                <a href="/">Submenu 1</a>
-              </li>
-              <li>
-                <a href="/">Submenu 2</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="/">Item 3</a>
-          </li>
-        </ul>
+        <ul className="menu menu-horizontal p-0">{menuItem}</ul>
       </div>
       <div className="navbar-end">
-        <a href="/" className="btn">
-          Get started
-        </a>
+        <button className="btn btn-outline btn-info">Appointment</button>
       </div>
     </div>
   );
