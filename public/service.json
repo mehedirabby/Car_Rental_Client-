@@ -1,6 +1,6 @@
 [
     {
-        "_id": "635a0c0b64a6d231228942ae",
+        
         "service_id": "04",
         "title": "Toyota Premio",
         "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/TOYOTA_PREMIO_T260_20160704_01.jpeg/640px-TOYOTA_PREMIO_T260_20160704_01.jpeg",
@@ -9,7 +9,7 @@
         
     },
     {
-        "_id": "635a0c0b64a6d231228942af",
+        
         "service_id": "05",
         "title": "Haice XXL",
         "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Toyota_HIACE_%28H200%29_left.JPG/1280px-Toyota_HIACE_%28H200%29_left.JPG",
@@ -18,7 +18,7 @@
         
     },
     {
-        "_id": "635b591a1dafe382a9da8c96",
+        
         "service_id": "01",
         "title": "Ambulance",
         "img": "https://ichef.bbci.co.uk/news/976/cpsprodpb/2C9A/production/_121781411_68298c43-55b6-48f8-b01c-3d13e1f69ff7.jpg",
@@ -27,7 +27,7 @@
        
     },
     {
-        "_id": "635b5afc1dafe382a9da8c98",
+        
         "service_id": "02",
         "title": "Truck",
         "img": "https://cms.eichertrucksandbuses.com/uploads/truck/exterior/eab6791833e7f758054d8742d6c3ede1.jpg",
@@ -36,7 +36,7 @@
         
     },
     {
-        "_id": "635b5b691dafe382a9da8c99",
+        
         "service_id": "03",
         "title": "Bus",
         "img": "https://mms.businesswire.com/media/20200831005698/en/817196/5/Exterior_%281%29.jpg",
@@ -45,7 +45,7 @@
        
     },
     {
-        "_id": "635b5ba51dafe382a9da8c9a",
+        
         "service_id": "06",
         "title": "Pick Up",
         "img": "https://images.carandbike.com/car-images/large/mahindra/bolero-pik-up/mahindra-bolero-pik-up.jpg?v=11",
