@@ -10,6 +10,12 @@ const Header = () => {
         <Link className="font-semibold" to="/">
           Home
         </Link>
+        <Link className="font-semibold" to="/services">
+          Service
+        </Link>
+        <Link className="font-semibold" to="/login">
+          Login
+        </Link>
       </li>
     </>
   );
