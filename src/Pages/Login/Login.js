@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
   const handleLogin = (event) => {
     event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    login(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => console.error(err));
   };
   return (
     <div className="hero w-full my-2">
@@ -19,13 +30,14 @@ const Login = () => {
         </div>
         <br />
         <div className="card w-full shadow-2xl bg-base-100">
-          <form className="card-body">
+          <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="text"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
               />
@@ -36,6 +48,7 @@ const Login = () => {
               </label>
               <input
                 type="text"
+                name="password"
                 placeholder="password"
                 className="input input-bordered"
               />
