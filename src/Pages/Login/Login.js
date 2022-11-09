@@ -1,6 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const Login = () => {
+  const handleLogin = (event) => {
+    event.preventDefault();
+  };
   return (
     <div className="hero w-full my-2">
       <div className="hero-content grid gap-0 md:grid-cols-1 flex-col lg:flex-row">
@@ -14,7 +19,7 @@ const Login = () => {
         </div>
         <br />
         <div className="card w-full shadow-2xl bg-base-100">
-          <div className="card-body">
+          <form className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -34,16 +39,31 @@ const Login = () => {
                 placeholder="password"
                 className="input input-bordered"
               />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
+              <label className="label mt-2">
+                <p>
+                  Create and Account!{" "}
+                  <Link className="text-error" to="/signup">
+                    Signup
+                  </Link>
+                </p>
               </label>
+              <div>
+                <p className="text-2xl mt-2">
+                  Login with:{" "}
+                  <button>
+                    <FaGoogle></FaGoogle>
+                  </button>{" "}
+                  &{" "}
+                  <button>
+                    <FaGithub></FaGithub>
+                  </button>
+                </p>
+              </div>
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

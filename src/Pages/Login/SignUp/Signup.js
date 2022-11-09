@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const Signup = () => {
+  const { createUser } = useContext(AuthContext);
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => console.error(err));
+  };
   return (
     <div className="hero w-full my-2">
       <div className="hero-content grid gap-0 md:grid-cols-1 flex-col lg:flex-row">
@@ -14,7 +30,7 @@ const Signup = () => {
         </div>
         <br />
         <div className="card w-full shadow-2xl bg-base-100">
-          <div className="card-body">
+          <form onSubmit={handleSignUp} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -31,6 +47,7 @@ const Signup = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
               />
@@ -41,19 +58,34 @@ const Signup = () => {
               </label>
               <input
                 type="password"
+                name="password"
                 placeholder="password"
                 className="input input-bordered"
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
+                <p>
+                  Already Had An Account?{" "}
+                  <Link className="text-error" to="/login">
+                    Login
+                  </Link>
+                </p>
               </label>
+              <p className="text-2xl mt-2">
+                Login with:{" "}
+                <button>
+                  <FaGoogle></FaGoogle>
+                </button>{" "}
+                &{" "}
+                <button>
+                  <FaGithub></FaGithub>
+                </button>
+              </p>
             </div>
+
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
