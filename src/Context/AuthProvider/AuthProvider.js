@@ -1,15 +1,17 @@
-import React, { Children, createContext } from "react";
-import App from "../../App";
+import React, { createContext, useState } from "react";
+
 import app from "../../Firebase/Firebase.config";
 import { getAuth } from "firebase/auth";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 const auth = getAuth(app);
-const authInfo = {};
 
-const AuthProvider = () => {
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const authInfo = { user, loading };
   return (
-    <AuthContext.Provider value={authInfo}>{Children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 
