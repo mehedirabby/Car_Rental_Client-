@@ -9,3 +9,8 @@
     display:inline-block;
     background: linear-gradient(to right,  #151515 0%,rgba(21, 21, 21, 0) 100%); /* W3C */
   }
+  @media screen and (min-width: 480px ) and (max-width:750px) {
+    .toto{
+        display: none;
+    }
+  }

@@ -1,4 +1,5 @@
 import React from "react";
+import "./Banner.css";
 
 const BannerItems = ({ slide }) => {
   const { image, id, prev, next } = slide;
@@ -14,7 +15,7 @@ const BannerItems = ({ slide }) => {
         </h3>
       </div>
       <div className="absolute flex justify-between transform -translate-y-1/2 left-24 text-xl w-2/5  top-1/2">
-        <p className="text-white">
+        <p className="text-white toto">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
           vitae fugiat accusamus eum quod fuga? Mollitia eveniet error officiis
           dicta, perferendis velit maiores porro cum aliquid, illum repudiandae
