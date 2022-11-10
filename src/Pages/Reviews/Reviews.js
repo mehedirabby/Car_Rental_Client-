@@ -29,6 +29,26 @@ const Reviews = () => {
     }
   };
 
+  const handleStatusUpdate = (id) => {
+    fetch(`http://localhost:5000/reviews/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ status: "approved" }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          const remining = reviews.filter((rev) => rev._id !== id);
+          const approving = reviews.find((rev) => rev._id === id);
+          approving.status = "Approved";
+          const newOrders = [...remining, approving];
+          setReview(newOrders);
+        }
+      });
+  };
   return (
     <div className="overflow-x-auto w-full">
       <table className="table w-full">
@@ -53,6 +73,7 @@ const Reviews = () => {
               handleDelete={handleDelete}
               key={review._id}
               review={review}
+              handleStatusUpdate={handleStatusUpdate}
             ></ReviewRow>
           ))}
           {/* <!-- row 2 --> */}

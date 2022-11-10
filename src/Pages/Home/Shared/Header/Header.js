@@ -18,6 +18,9 @@ const Header = () => {
         <Link className="font-semibold" to="/services">
           Service
         </Link>
+        <Link className="font-semibold" to="/blogs">
+          Blogs
+        </Link>
         {user?.email ? (
           <>
             <Link className="font-semibold" to="/reviews">

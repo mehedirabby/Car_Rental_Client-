@@ -1,10 +1,12 @@
 import Main from "../../Layout/Main";
+import Blogs from "../../Pages/Blogs/Blogs";
 import Checkout from "../../Pages/Checkout/Checkout";
 import Home from "../../Pages/Home/Home/Home";
 import Services from "../../Pages/Home/Home/Services/Services";
 import Login from "../../Pages/Login/Login";
 import Signup from "../../Pages/Login/SignUp/Signup";
 import Reviews from "../../Pages/Reviews/Reviews";
+import PrivateRoute from "../PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -35,13 +37,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/checkout/:id",
-        element: <Checkout></Checkout>,
+        element: (
+          <PrivateRoute>
+            <Checkout></Checkout>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/services/${params.id}`),
       },
       {
         path: "/reviews",
         element: <Reviews></Reviews>,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
       },
     ],
   },

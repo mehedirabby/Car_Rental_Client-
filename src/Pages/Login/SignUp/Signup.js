@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Signup = () => {
-  const { createUser, auth } = useContext(AuthContext);
+  const { createUser, providerLogin } = useContext(AuthContext);
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -18,6 +18,25 @@ const Signup = () => {
         console.log(user);
       })
       .catch((err) => console.error(err));
+  };
+  const googleProvider = new GoogleAuthProvider();
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
+  };
+  const gitHubProvider = new GithubAuthProvider();
+
+  const handleGithubSignIn = () => {
+    providerLogin(gitHubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <div className="hero w-full my-2">
@@ -74,20 +93,19 @@ const Signup = () => {
               </label>
               <p className="text-2xl mt-2">
                 Login with:{" "}
-                <button>
+                <button onClick={handleGoogleSignIn}>
                   <FaGoogle></FaGoogle>
                 </button>{" "}
                 &{" "}
-                <button>
+                <button onClick={handleGithubSignIn}>
                   <FaGithub></FaGithub>
                 </button>
               </p>
             </div>
-
-            <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
-            </div>
           </form>
+          <div className="form-control mt-6">
+            <button className="btn btn-primary">Login</button>
+          </div>
         </div>
       </div>
     </div>

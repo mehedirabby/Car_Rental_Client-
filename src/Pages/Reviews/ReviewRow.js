@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 
-const ReviewRow = ({ review, handleDelete }) => {
+const ReviewRow = ({ review, handleDelete, handleStatusUpdate }) => {
   const { serviceName, customer, phone, email, price, service, _id, status } =
     review;
   const [reviewService, setReviewService] = useState({});
@@ -49,7 +49,10 @@ const ReviewRow = ({ review, handleDelete }) => {
       </td>
 
       <th>
-        <button className="btn btn-ghost btn-xs">
+        <button
+          onClick={() => handleStatusUpdate(_id)}
+          className="btn btn-ghost btn-xs"
+        >
           {status ? status : "pending"}
         </button>
       </th>

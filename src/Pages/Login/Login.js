@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, providerLogin } = useContext(AuthContext);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -16,6 +17,24 @@ const Login = () => {
         console.log(user);
       })
       .catch((err) => console.error(err));
+  };
+  const googleProvider = new GoogleAuthProvider();
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
+  };
+  const gitHubProvider = new GithubAuthProvider();
+  const handleGithubSignIn = () => {
+    providerLogin(gitHubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <div className="hero w-full my-2">
@@ -63,11 +82,11 @@ const Login = () => {
               <div>
                 <p className="text-2xl mt-2">
                   Login with:{" "}
-                  <button>
+                  <button onClick={handleGoogleSignIn}>
                     <FaGoogle></FaGoogle>
                   </button>{" "}
                   &{" "}
-                  <button>
+                  <button onClick={handleGithubSignIn}>
                     <FaGithub></FaGithub>
                   </button>
                 </p>
