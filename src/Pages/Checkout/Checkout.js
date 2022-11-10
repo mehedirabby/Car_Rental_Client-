@@ -6,6 +6,40 @@ import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 const Checkout = () => {
   const { title, _id, img, price, description } = useLoaderData();
   const { user } = useContext(AuthContext);
+  const handlePlaceOrder = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = `${form.firstName.value} ${form.lastName.value}`;
+    const email = user?.email || "unregistered";
+    const phone = form.phone.value;
+    const message = form.message.value;
+    const reviews = {
+      service: _id,
+      serviceName: title,
+      price,
+      customer: name,
+      email,
+      phone,
+      message,
+    };
+    fetch("http://localhost:5000/reviews", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("genius-token")}`,
+      },
+      body: JSON.stringify(reviews),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          alert("Review placed successfully");
+          form.reset();
+        }
+      })
+      .catch((er) => console.error(er));
+  };
   return (
     <section>
       <div>
@@ -28,7 +62,7 @@ const Checkout = () => {
           <h2 className="text-3xl App text-orange-800 pb-6">
             Review for {title}
           </h2>
-          <form>
+          <form onSubmit={handlePlaceOrder}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <input
                 type="text"
