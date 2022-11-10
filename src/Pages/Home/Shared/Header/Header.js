@@ -5,7 +5,10 @@ import { AuthContext } from "../../../../Context/AuthProvider/AuthProvider";
 import "./Header.css";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut().then().catch();
+  };
   const menuItem = (
     <>
       <li>
@@ -20,7 +23,9 @@ const Header = () => {
             <Link className="font-semibold" to="/reviews">
               My reviews
             </Link>
-            <Link className="font-semibold">Log Out</Link>
+            <Link onClick={handleLogOut} className="font-semibold">
+              Log Out
+            </Link>
           </>
         ) : (
           <Link className="font-semibold" to="/login">

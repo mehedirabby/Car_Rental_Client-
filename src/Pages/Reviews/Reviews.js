@@ -23,6 +23,7 @@ const Reviews = () => {
           if (data.deletedCount > 0) {
             alert("deleted successfully");
             const remining = reviews.filter((rev) => rev._id !== id);
+            setReview(remining);
           }
         });
     }

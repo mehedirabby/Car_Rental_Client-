@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 const ReviewRow = ({ review, handleDelete }) => {
-  const { serviceName, customer, phone, price, service, _id } = review;
+  const { serviceName, customer, phone, email, price, service, _id, status } =
+    review;
   const [reviewService, setReviewService] = useState({});
   useEffect(() => {
     fetch(`http://localhost:5000/services/${service}`)
@@ -31,7 +32,7 @@ const ReviewRow = ({ review, handleDelete }) => {
           </div>
           <div>
             <div className="font-bold">{customer}</div>
-            <div className="text-sm opacity-50">{phone}</div>
+            <div className="text-sm opacity-50">{email}</div>
           </div>
         </div>
       </td>
@@ -42,7 +43,9 @@ const ReviewRow = ({ review, handleDelete }) => {
       </td>
 
       <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+        <button className="btn btn-ghost btn-xs">
+          {status ? status : "pending"}
+        </button>
       </th>
     </tr>
   );
