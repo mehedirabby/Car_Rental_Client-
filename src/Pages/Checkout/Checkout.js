@@ -22,7 +22,7 @@ const Checkout = () => {
       phone,
       message,
     };
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://car-rental-server-five.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -5,7 +5,7 @@ import ReviewRow from "./ReviewRow";
 const Reviews = () => {
   const { user } = useContext(AuthContext);
   const [reviews, setReview] = useState([]);
-  const url = `http://localhost:5000/reviews?email=${user?.email}`;
+  const url = `https://car-rental-server-five.vercel.app/reviews?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -14,7 +14,7 @@ const Reviews = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("are you sure you want to cancel the order");
     if (proceed) {
-      fetch(`http://localhost:5000/reviews/${id}`, {
+      fetch(`https://car-rental-server-five.vercel.app/reviews/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -30,7 +30,7 @@ const Reviews = () => {
   };
 
   const handleStatusUpdate = (id) => {
-    fetch(`http://localhost:5000/reviews/${id}`, {
+    fetch(`https://car-rental-server-five.vercel.app/reviews/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
