@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const Signup = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, auth } = useContext(AuthContext);
+
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;

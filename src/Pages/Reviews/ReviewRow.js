@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const ReviewRow = ({ review, handleDelete }) => {
   const { serviceName, customer, phone, email, price, service, _id, status } =
@@ -23,10 +25,14 @@ const ReviewRow = ({ review, handleDelete }) => {
           <div className="avatar">
             <div className="rounded w-24 h-24">
               {reviewService?.img && (
-                <img
-                  src={reviewService.img}
-                  alt="Avatar Tailwind CSS Component"
-                />
+                <PhotoProvider>
+                  <PhotoView src={reviewService.img}>
+                    <img
+                      src={reviewService.img}
+                      alt="Avatar Tailwind CSS Component"
+                    />
+                  </PhotoView>
+                </PhotoProvider>
               )}
             </div>
           </div>
